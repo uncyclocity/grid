@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="grid.js"></script>
+    <style>
+        #grid_dish{
+            width: 400px;
+            height: 300px;
+            background-color: aliceblue;
+        }
+        #grid_main{
+            width: 400px;
+        }
+        #output_area{
+            width: 800px;
+            height: 150px;
+        }
+        #save_btn{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <input type="button" value="조회" class="view_btn" onclick="edit()">
+                <input type="button" value="추가" class="add_btn" onclick="add()">
+            </td>
+            <td rowspan="2">
+                <table>
+                    <tr>
+                        <td>이름</td>
+                        <td><input type="text" id="name" disabled=""></td>
+                    </tr>
+                    <tr>
+                        <td>부서</td>
+                        <td><input type="text" id="part" disabled=""></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="button" value="저장" id="save_btn" onclick="save()" disabled=""></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="grid_dish">
+                    <table id="grid_main">
+                        <tr>
+                            <th>No.</th>
+                            <th>이름</th>
+                            <th>부서</th>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="text" id="output_area" disabled></td>
+        </tr>
+    </table>
+</body>
+</html>
