@@ -51,10 +51,10 @@ function cell_focus(grid_rowcnt){
     name.style.backgroundColor = "#71deff"
     part.style.backgroundColor = "#71deff"
 
-    document.getElementById("name").value = name.value;
-    document.getElementById("part").value = part.value;
-
     tmp = grid_rowcnt;
+
+    document.getElementById("name").value = db[grid_rowcnt-1][1];
+    document.getElementById("part").value = db[grid_rowcnt-1][2];
 
     output.value = db[grid_rowcnt-1][1] + ", " + db[grid_rowcnt-1][2];
 }
