@@ -30,7 +30,8 @@ function add(){
         part_box.disabled = false;
     }
 
-    
+    document.getElementById("name").value = "";
+    document.getElementById("part").value = "";
 }
 
 function cell_focus(grid_rowcnt){
@@ -77,6 +78,8 @@ function save(){
             newPart.innerHTML = "<input type='button' class='cell' id='"+ grid_rowcnt +"_3' value='" + part + "' onclick='cell_focus("+ grid_rowcnt +")'>";
             db[db.length] = [grid_rowcnt, name, part];
             alert('추가완료');
+            document.getElementById("name").value = "";
+            document.getElementById("part").value = "";
             break;
         case 2:
             document.getElementById(tmp + "_2").value = name;
