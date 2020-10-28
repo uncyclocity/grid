@@ -10,16 +10,24 @@
             width: 400px;
             height: 300px;
             background-color: aliceblue;
+            overflow: scroll;
         }
         #grid_main{
-            width: 400px;
+            border-collapse: collapse;
+            width: 380px;
         }
         #output_area{
             width: 800px;
-            height: 150px;
+            height: 50px;
         }
         #save_btn{
             width: 100%;
+        }
+        .cell{
+            border: none;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
         }
     </style>
 </head>
@@ -27,7 +35,6 @@
     <table>
         <tr>
             <td>
-                <input type="button" value="조회" class="view_btn" onclick="edit()">
                 <input type="button" value="추가" class="add_btn" onclick="add()">
             </td>
             <td rowspan="2">
@@ -49,7 +56,7 @@
         <tr>
             <td>
                 <div id="grid_dish">
-                    <table id="grid_main">
+                    <table id="grid_main" border="1">
                         <tr>
                             <th>No.</th>
                             <th>이름</th>
