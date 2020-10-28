@@ -12,52 +12,131 @@ function cell_reset(){
     tmp = -1;
 }
 
-function add(){
-    sw = 1;
-
-    var add_btn = document.getElementById("add_btn");
+function disabled(){
     var save_btn = document.getElementById("save_btn");
     var name_box = document.getElementById("name");
     var part_box = document.getElementById("part");
 
-    add_btn.style.backgroundColor = "#71deff";
+    save_btn.disabled = true;
+    name_box.disabled = true;
+    part_box.disabled = true;
+}
 
-    cell_reset();
+function abled(){
+    var save_btn = document.getElementById("save_btn");
+    var name_box = document.getElementById("name");
+    var part_box = document.getElementById("part");
 
-    if(save_btn.disabled == true){
-        save_btn.disabled = false;
-        name_box.disabled = false;
-        part_box.disabled = false;
+    save_btn.disabled = false;
+    name_box.disabled = false;
+    part_box.disabled = false;
+}
+
+function clear(){
+
+}
+
+function add(){
+    if(sw!=1){
+        sw = 1;
+
+        var add_btn = document.getElementById("add_btn");
+
+        add_btn.style.backgroundColor = "#34d0ff";
+
+        if(tmp != -1)
+            cell_reset();
+
+        abled();
+
+        document.getElementById("name").value = "";
+        document.getElementById("part").value = "";
     }
+    else{
+        sw = 0;
 
-    document.getElementById("name").value = "";
-    document.getElementById("part").value = "";
+        document.getElementById("add_btn").style.backgroundColor = "#b0edff";
+
+        disabled();
+
+        document.getElementById("name").value = "";
+        document.getElementById("part").value = "";
+    }
 }
 
 function cell_focus(grid_rowcnt){
-    sw = 2;
-    document.getElementById("add_btn").style.backgroundColor = "#f0f8ff";
+    if(sw!=2){
+        sw = 2;
 
-    if(tmp>=0){
+        document.getElementById("add_btn").style.backgroundColor = "#b0edff";
+
+        abled();
+
+        if(tmp != -1){
+            cell_reset();
+        }
+
+        var num = document.getElementById(grid_rowcnt + "_1");
+        var name = document.getElementById(grid_rowcnt + "_2");
+        var part = document.getElementById(grid_rowcnt + "_3");
+        var output = document.getElementById("output_area");
+
+        num.style.backgroundColor = "#71deff"
+        name.style.backgroundColor = "#71deff"
+        part.style.backgroundColor = "#71deff"
+
+        tmp = grid_rowcnt;
+
+        document.getElementById("name").value = db[grid_rowcnt-1][1];
+        document.getElementById("part").value = db[grid_rowcnt-1][2];
+
+        output.value = db[grid_rowcnt-1][1] + ", " + db[grid_rowcnt-1][2];
+    }else if(grid_rowcnt != tmp){
+
         cell_reset();
+
+        var num = document.getElementById(grid_rowcnt + "_1");
+        var name = document.getElementById(grid_rowcnt + "_2");
+        var part = document.getElementById(grid_rowcnt + "_3");
+        var output = document.getElementById("output_area");
+
+        num.style.backgroundColor = "#71deff"
+        name.style.backgroundColor = "#71deff"
+        part.style.backgroundColor = "#71deff"
+
+        tmp = grid_rowcnt;
+
+        document.getElementById("name").value = db[grid_rowcnt-1][1];
+        document.getElementById("part").value = db[grid_rowcnt-1][2];
+
+        output.value = db[grid_rowcnt-1][1] + ", " + db[grid_rowcnt-1][2];
     }
+    else{
+        console.log(grid_rowcnt, tmp);
 
+        cell_reset();
 
-    var num = document.getElementById(grid_rowcnt + "_1");
-    var name = document.getElementById(grid_rowcnt + "_2");
-    var part = document.getElementById(grid_rowcnt + "_3");
-    var output = document.getElementById("output_area");
+        sw = 0;
 
-    num.style.backgroundColor = "#71deff"
-    name.style.backgroundColor = "#71deff"
-    part.style.backgroundColor = "#71deff"
+        disabled();
 
-    tmp = grid_rowcnt;
+        document.getElementById("name").value = "";
+        document.getElementById("part").value = "";
+    }
+    
+}
 
-    document.getElementById("name").value = db[grid_rowcnt-1][1];
-    document.getElementById("part").value = db[grid_rowcnt-1][2];
-
-    output.value = db[grid_rowcnt-1][1] + ", " + db[grid_rowcnt-1][2];
+function isEmpty(name, part){
+    if(name==""){
+        alert('이름을 입력하세요');
+        return false;
+    }
+    else if(part==""){
+        alert('부서를 입력하세요');
+        return false;
+    }
+    else
+        return true;
 }
 
 function save(){
@@ -66,26 +145,30 @@ function save(){
 
     switch(sw){
         case 1:
-            var grid = document.getElementById("grid_main");
-            var grid_rowcnt = grid.rows.length;
-            var grid_newrow = grid.insertRow(grid_rowcnt);
-            var newNum = grid_newrow.insertCell(0);
-            var newName = grid_newrow.insertCell(1);
-            var newPart = grid_newrow.insertCell(2);
-
-            newNum.innerHTML = "<input type='button' class='cell' id='"+ grid_rowcnt +"_1' value='" + grid_rowcnt + "' onclick='cell_focus("+ grid_rowcnt +")'>";
-            newName.innerHTML = "<input type='button' class='cell' id='"+ grid_rowcnt +"_2' value='" + name + "' onclick='cell_focus("+ grid_rowcnt +")'>";
-            newPart.innerHTML = "<input type='button' class='cell' id='"+ grid_rowcnt +"_3' value='" + part + "' onclick='cell_focus("+ grid_rowcnt +")'>";
-            db[db.length] = [grid_rowcnt, name, part];
-            alert('추가완료');
-            document.getElementById("name").value = "";
-            document.getElementById("part").value = "";
+            if(isEmpty(name, part)){
+                var grid = document.getElementById("grid_main");
+                var grid_rowcnt = grid.rows.length;
+                var grid_newrow = grid.insertRow(grid_rowcnt);
+                var newNum = grid_newrow.insertCell(0);
+                var newName = grid_newrow.insertCell(1);
+                var newPart = grid_newrow.insertCell(2);
+    
+                newNum.innerHTML = "<div class='cell' id='"+ grid_rowcnt +"_1' onclick='cell_focus("+ grid_rowcnt +")'>" + grid_rowcnt + "</div>";
+                newName.innerHTML = "<div class='cell' id='"+ grid_rowcnt +"_2' onclick='cell_focus("+ grid_rowcnt +")'>" + name + "</div>";
+                newPart.innerHTML = "<div class='cell' id='"+ grid_rowcnt +"_3' onclick='cell_focus("+ grid_rowcnt +")'>" + part + "</div>";
+                db[db.length] = [grid_rowcnt, name, part];
+                alert('추가완료');
+                document.getElementById("name").value = "";
+                document.getElementById("part").value = "";
+            }
             break;
         case 2:
-            document.getElementById(tmp + "_2").value = name;
-            document.getElementById(tmp + "_3").value = part;
-            db[tmp-1] = [tmp, name, part];
-            alert('수정완료');
+            if(isEmpty(name, part)){
+                document.getElementById(tmp + "_2").innerText = name;
+                document.getElementById(tmp + "_3").innerText = part;
+                db[tmp-1] = [tmp, name, part];
+                alert('수정완료');
+            }
             break;
         default:
             alert('수정하시려면 해당 행을 누르시고, 추가하려면 [추가]를 누르세요')

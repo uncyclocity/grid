@@ -12,8 +12,13 @@
             background-color: aliceblue;
             overflow: scroll;
         }
+        #grid_dish ::-webkit-scrollbar {
+            width: 10px;
+            background-color: rgb(110, 203, 247);
+        }
         #grid_main{
             border-collapse: collapse;
+            border-color: rgb(153, 153, 153);
             width: 380px;
         }
         #output_area{
@@ -31,7 +36,7 @@
         }
         #add_btn{
             border: none;
-            background-color: aliceblue;
+            background-color: #b0edff;
         }
     </style>
 </head>
@@ -62,7 +67,7 @@
                 <div id="grid_dish">
                     <table id="grid_main" border="1">
                         <tr>
-                            <th>No.</th>
+                            <th width="50px">No.</th>
                             <th>이름</th>
                             <th>부서</th>
                         </tr>
