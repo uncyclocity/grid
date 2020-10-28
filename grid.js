@@ -15,9 +15,12 @@ function cell_reset(){
 function add(){
     sw = 1;
 
+    var add_btn = document.getElementById("add_btn");
     var save_btn = document.getElementById("save_btn");
     var name_box = document.getElementById("name");
     var part_box = document.getElementById("part");
+
+    add_btn.style.backgroundColor = "#71deff";
 
     cell_reset();
 
@@ -32,9 +35,12 @@ function add(){
 
 function cell_focus(grid_rowcnt){
     sw = 2;
+    document.getElementById("add_btn").style.backgroundColor = "#f0f8ff";
 
-    if(tmp>=0)
+    if(tmp>=0){
         cell_reset();
+    }
+
 
     var num = document.getElementById(grid_rowcnt + "_1");
     var name = document.getElementById(grid_rowcnt + "_2");
@@ -44,6 +50,9 @@ function cell_focus(grid_rowcnt){
     num.style.backgroundColor = "#71deff"
     name.style.backgroundColor = "#71deff"
     part.style.backgroundColor = "#71deff"
+
+    document.getElementById("name").value = name.value;
+    document.getElementById("part").value = part.value;
 
     tmp = grid_rowcnt;
 
