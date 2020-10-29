@@ -4,80 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="grid.js"></script>
-    <style>
-        #grid_dish{
-            width: 400px;
-            height: 300px;
-            background-color: aliceblue;
-            overflow: scroll;
-        }
-        #grid_dish ::-webkit-scrollbar {
-            width: 10px;
-            background-color: rgb(110, 203, 247);
-        }
-        #grid_main{
-            border-collapse: collapse;
-            border-color: rgb(153, 153, 153);
-            width: 380px;
-        }
-        #output_area{
-            width: 800px;
-            height: 50px;
-        }
-        #save_btn{
-            width: 100%;
-        }
-        .cell{
-            border: none;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-        }
-        #add_btn{
-            border: none;
-            background-color: #b0edff;
-        }
-    </style>
+    <script src="grid_uglified.js"></script>
+    <link rel="stylesheet" type="text/css" href="grid.css">
 </head>
 <body>
-    <table>
-        <tr>
-            <td>
-                <input type="button" value="추가" id="add_btn" onclick="add()">
-            </td>
-            <td rowspan="2">
-                <table>
-                    <tr>
-                        <td>이름</td>
-                        <td><input type="text" id="name" disabled=""></td>
-                    </tr>
-                    <tr>
-                        <td>부서</td>
-                        <td><input type="text" id="part" disabled=""></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="button" value="저장" id="save_btn" onclick="save()" disabled=""></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div id="grid_dish">
-                    <table id="grid_main" border="1">
+    <center>
+        <table>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="추가" id="add_btn" onclick="add()">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="grid_dish">
+                        <center>
+                            <table id="grid_main">
+                                <tr>
+                                    <td width="50px" id="title"><center>No.</center></td>
+                                    <td width="150px" id="title"><center>이름</center></td>
+                                    <td id="title"><center>부서</center></td>
+                                </tr>
+                            </table>
+                        </center>
+                    </div>
+                </td>
+                <td>
+                    <table id="input">
                         <tr>
-                            <th width="50px">No.</th>
-                            <th>이름</th>
-                            <th>부서</th>
+                            <td colspan="2" height="50px"><div id="input_title_top">여기에</div><span id="input_title_bottom">사원정보 입력</span></td>
+                        </tr>
+                        <tr>
+                            <td height="10px"><hr width="30px" color="#00c2ab"></td>
+                        </tr>
+                        <tr>
+                            <td><div id="hint1">이름</div></td>
+                            <td><input type="text" class="text_box" id="name" disabled=""></td>
+                        </tr>
+                        <tr>
+                            <td><div id="hint2">부서</div></td>
+                            <td><input type="text" class="text_box" id="part" disabled=""></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="button" value="저장" id="save_btn" onclick="save()" disabled=""></td>
                         </tr>
                     </table>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="text" id="output_area" disabled></td>
-        </tr>
-    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <input type="text" id="output_area" disabled>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </center>
+    
 </body>
 </html>

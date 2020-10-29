@@ -1,0 +1,24 @@
+{
+  "name": "grid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "grid.js",
+  "dependencies": {
+    "grunt": "^1.3.0",
+    "grunt-contrib-uglify": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uncyclocity/grid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uncyclocity/grid/issues"
+  },
+  "homepage": "https://github.com/uncyclocity/grid#readme"
+}

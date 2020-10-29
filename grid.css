@@ -1,0 +1,114 @@
+@font-face{
+    font-family: "fonts/애플EB";
+    src:url("apple_eb.ttf") format("truetype");
+}
+@font-face{
+    font-family: "fonts/애플R";
+    src:url("apple_r.ttf") format("truetype");
+}
+@font-face{
+    font-family: "fonts/애플UL";
+    src:url("apple_ul.ttf") format("truetype");
+}
+body{
+    background-color: #ffffff;
+    font-family: "애플R";
+}
+#grid_dish{
+    width: 420px;
+    height: 300px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 3px 3px 20px #aaaaaa;
+}
+#grid_main{
+    border-collapse: collapse;
+    border: none;
+    color: #353535;
+    font-family: "애플R";
+    width: 380px;
+}
+#output_area{
+    font-family: "애플EB";
+    background-color: #00c2ab;
+    color: #ffffff;
+    width: 100%;
+    height: 40px;
+    border: none;
+    font-size: 15pt;
+    border-radius: 20px;
+    box-shadow: 3px 3px 20px #aaaaaa;
+    margin-top: 10px;
+    padding: 10px;
+}
+#input{
+    padding: 20px;
+    width: 250px;
+    height: 320px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 20px #aaaaaa;
+}
+#save_btn{
+    border-radius: 5px;
+    font-family: "애플EB";
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: transparent;
+    color: #B1B1B1;
+    border: 1px solid #B1B1B1;
+}
+.cell{
+    color: #616161;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+#add_btn{
+    background-color:#e9fffc;
+    color: #00c2ab;
+    width: 130px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px #42ccba;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 15pt;
+    font-family: "애플EB";
+}
+#title{
+    font-family: "애플EB";
+    font-size: 13pt;
+    color: #00c2ab;
+}
+#input_title_top{
+    margin-top: 10px;
+    font-family: "애플UL";
+    font-size: 20pt;
+    color: #00c2ab;
+}
+#input_title_bottom{
+    font-family: "애플EB";
+    font-size: 20pt;
+    color: #00c2ab;
+}
+.text_box{
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom-color: #b1b1b1;
+}
+#hint1{color: #B1B1B1;}
+#hint2{color: #B1B1B1;}
+#name{font-family: "애플R"; color: #616161;}
+#part{font-family: "애플R"; color: #616161;}
