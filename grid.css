@@ -1,14 +1,14 @@
 @font-face{
-    font-family: "fonts/애플EB";
-    src:url("apple_eb.ttf") format("truetype");
+    font-family: "애플EB";
+    src:url("fonts/apple_eb.ttf") format("truetype");
 }
 @font-face{
-    font-family: "fonts/애플R";
-    src:url("apple_r.ttf") format("truetype");
+    font-family: "애플R";
+    src:url("fonts/apple_r.ttf") format("truetype");
 }
 @font-face{
-    font-family: "fonts/애플UL";
-    src:url("apple_ul.ttf") format("truetype");
+    font-family: "애플UL";
+    src:url("fonts/apple_ul.ttf") format("truetype");
 }
 body{
     background-color: #ffffff;
@@ -23,6 +23,7 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
     box-shadow: 3px 3px 20px #aaaaaa;
+    overflow: auto;
 }
 #grid_main{
     border-collapse: collapse;
