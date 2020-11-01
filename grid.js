@@ -12,6 +12,8 @@ function cell_reset(){
     num.style.color = "#616161"
     name.style.color = "#616161"
     part.style.color = "#616161"
+    document.getElementById("output_area").value = "";
+
     tmp = -1;
 }
 
