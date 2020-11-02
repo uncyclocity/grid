@@ -1,17 +1,22 @@
 var sw = 0;
 var db = [];
 var tmp = -1;
+var greenblue = "#00c2ab";
+var bright_greenblue = "#e9fffc";
+var white = "#ffffff";
 
 function cell_reset(){
     var num = document.getElementById(tmp + "_1");
     var name = document.getElementById(tmp + "_2");
     var part = document.getElementById(tmp + "_3");
-    num.style.backgroundColor = "#ffffff"
-    name.style.backgroundColor = "#ffffff"
-    part.style.backgroundColor = "#ffffff"
-    num.style.color = "#616161"
-    name.style.color = "#616161"
-    part.style.color = "#616161"
+    var grid_charColor = "#616161";
+
+    num.style.backgroundColor = white;
+    name.style.backgroundColor = white;
+    part.style.backgroundColor = white;
+    num.style.color = grid_charColor;
+    name.style.color = grid_charColor;
+    part.style.color = grid_charColor;
     document.getElementById("output_area").value = "";
 
     tmp = -1;
@@ -67,42 +72,49 @@ function isNotEmpty(name, part){
         return true;
 }
 
+function clear(){
+    document.getElementById("name").value = "";
+    document.getElementById("part").value = "";
+}
+
 function add(){
+    var add_btn = document.getElementById("add_btn");
+
     if(sw!=1){
-        sw = 1;
+        sw = 1;      
 
-        var add_btn = document.getElementById("add_btn");
-
-        add_btn.style.backgroundColor = "#00c2ab";
-        add_btn.style.color = " #e9fffc";
+        add_btn.style.backgroundColor = greenblue;
+        add_btn.style.color = bright_greenblue;
 
         if(tmp != -1)
             cell_reset();
 
         abled();
 
-        document.getElementById("name").value = "";
-        document.getElementById("part").value = "";
+        clear();
     }
     else{
         sw = 0;
 
-        document.getElementById("add_btn").style.backgroundColor = "#e9fffc";
-        document.getElementById("add_btn").style.color = "#00c2ab";
+        add_btn.style.backgroundColor = bright_greenblue;
+        add_btn.style.color = greenblue;
 
         disabled();
 
-        document.getElementById("name").value = "";
-        document.getElementById("part").value = "";
+        clear();
     }
 }
 
 function cell_focus(grid_rowcnt){
     if(sw!=2){
-        sw = 2;
+        var add_btn = document.getElementById("add_btn");
 
-        document.getElementById("add_btn").style.backgroundColor = "#e9fffc";
-        document.getElementById("add_btn").style.color="#00c2ab"
+        if(sw == 1){
+            add_btn.style.backgroundColor = bright_greenblue;
+            add_btn.style.color = greenblue;
+        }
+
+        sw = 2;
 
         abled();
 
@@ -111,12 +123,12 @@ function cell_focus(grid_rowcnt){
         var part = document.getElementById(grid_rowcnt + "_3");
         var output = document.getElementById("output_area");
 
-        num.style.backgroundColor = "#00c2ab"
-        name.style.backgroundColor = "#00c2ab"
-        part.style.backgroundColor = "#00c2ab"
-        num.style.color = "#ffffff"
-        name.style.color = "#ffffff"
-        part.style.color = "#ffffff"
+        num.style.backgroundColor = greenblue;
+        name.style.backgroundColor = greenblue;
+        part.style.backgroundColor = greenblue;
+        num.style.color = white;
+        name.style.color = white;
+        part.style.color = white;
 
         tmp = grid_rowcnt;
 
@@ -124,6 +136,7 @@ function cell_focus(grid_rowcnt){
         document.getElementById("part").value = db[grid_rowcnt-1][2];
 
         output.value = db[grid_rowcnt-1][1] + ", " + db[grid_rowcnt-1][2];
+
     }else if(grid_rowcnt != tmp){
 
         cell_reset();
@@ -133,12 +146,12 @@ function cell_focus(grid_rowcnt){
         var part = document.getElementById(grid_rowcnt + "_3");
         var output = document.getElementById("output_area");
 
-        num.style.backgroundColor = "#00c2ab"
-        name.style.backgroundColor = "#00c2ab"
-        part.style.backgroundColor = "#00c2ab"
-        num.style.color = "#ffffff"
-        name.style.color = "#ffffff"
-        part.style.color = "#ffffff"
+        num.style.backgroundColor = greenblue;
+        name.style.backgroundColor = greenblue;
+        part.style.backgroundColor = greenblue;
+        num.style.color = white;
+        name.style.color = white;
+        part.style.color = white;
 
         tmp = grid_rowcnt;
 
@@ -155,8 +168,7 @@ function cell_focus(grid_rowcnt){
 
         disabled();
 
-        document.getElementById("name").value = "";
-        document.getElementById("part").value = "";
+        clear();
     }
     
 }
@@ -180,8 +192,8 @@ function save(){
                 newPart.innerHTML = "<center><div class='cell' id='"+ grid_rowcnt +"_3' onclick='cell_focus("+ grid_rowcnt +")'>" + part + "</div></center>";
                 db[db.length] = [grid_rowcnt, name, part];
                 alert('추가완료');
-                document.getElementById("name").value = "";
-                document.getElementById("part").value = "";
+                
+                clear();
             }
             break;
         case 2:
