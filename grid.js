@@ -33,8 +33,6 @@ function disabled(){
     save_btn.style.color = disabled_color;
     hint1.style.color = disabled_color;
     hint2.style.color = disabled_color;
-    
-    text_box_color = disabled_color;
 
 }
 
@@ -54,7 +52,6 @@ function abled(){
     save_btn.style.color = abled_color;
     hint1.style.color = abled_color;
     hint2.style.color = abled_color;
-    text_box_color = abled_color;
 }
 
 function isEmpty(name, part){
