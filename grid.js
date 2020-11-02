@@ -47,7 +47,7 @@ function abled(){
     var part_box = document.getElementById("part");
     var hint1 = document.getElementById("hint1");
     var hint2 = document.getElementById("hint2");
-    var abled_color = "#00c2ab"
+    var abled_color = greenblue;
 
     save_btn.disabled = false;
     name_box.disabled = false;
@@ -192,7 +192,7 @@ function save(){
                 newPart.innerHTML = "<center><div class='cell' id='"+ grid_rowcnt +"_3' onclick='cell_focus("+ grid_rowcnt +")'>" + part + "</div></center>";
                 db[db.length] = [grid_rowcnt, name, part];
                 alert('추가완료');
-                
+
                 clear();
             }
             break;
