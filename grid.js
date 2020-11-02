@@ -23,7 +23,6 @@ function disabled(){
     var part_box = document.getElementById("part");
     var hint1 = document.getElementById("hint1");
     var hint2 = document.getElementById("hint2");
-    //var text_box_color = document.getElementsByClassName("text_box").style.borderColor;
     var disabled_color = "#b1b1b1"
 
     save_btn.disabled = true;
@@ -45,7 +44,6 @@ function abled(){
     var part_box = document.getElementById("part");
     var hint1 = document.getElementById("hint1");
     var hint2 = document.getElementById("hint2");
-    //var text_box_color = document.getElementsByClassName("text_box").style.borderColor;
     var abled_color = "#00c2ab"
 
     save_btn.disabled = false;
