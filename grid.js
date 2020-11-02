@@ -54,7 +54,7 @@ function abled(){
     hint2.style.color = abled_color;
 }
 
-function isEmpty(name, part){
+function isNotEmpty(name, part){
     if(name==""){
         alert('이름을 입력하세요');
         return false;
@@ -74,8 +74,7 @@ function add(){
         var add_btn = document.getElementById("add_btn");
 
         add_btn.style.backgroundColor = "#00c2ab";
-
-        document.getElementById("add_btn").style.color = " #e9fffc";
+        add_btn.style.color = " #e9fffc";
 
         if(tmp != -1)
             cell_reset();
@@ -106,10 +105,6 @@ function cell_focus(grid_rowcnt){
         document.getElementById("add_btn").style.color="#00c2ab"
 
         abled();
-
-        if(tmp != -1){
-            cell_reset();
-        }
 
         var num = document.getElementById(grid_rowcnt + "_1");
         var name = document.getElementById(grid_rowcnt + "_2");
@@ -172,7 +167,7 @@ function save(){
 
     switch(sw){
         case 1:
-            if(isEmpty(name, part)){
+            if(isNotEmpty(name, part)){
                 var grid = document.getElementById("grid_main");
                 var grid_rowcnt = grid.rows.length;
                 var grid_newrow = grid.insertRow(grid_rowcnt);
@@ -190,7 +185,7 @@ function save(){
             }
             break;
         case 2:
-            if(isEmpty(name, part)){
+            if(isNotEmpty(name, part)){
                 document.getElementById(tmp + "_2").innerText = name;
                 document.getElementById(tmp + "_3").innerText = part;
                 db[tmp-1] = [tmp, name, part];
