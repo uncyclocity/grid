@@ -153,8 +153,7 @@ function cell_focus(grid_rowcnt){
         output.value = db[grid_rowcnt-1][1] + ", " + db[grid_rowcnt-1][2];
     }
     else{
-        console.log(grid_rowcnt, tmp);
-
+        
         cell_reset();
 
         sw = 0;
