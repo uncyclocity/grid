@@ -105,6 +105,14 @@ function add(){
     }
 }
 
+function view(){
+
+}
+
+function send(){
+    
+}
+
 function cell_focus(grid_rowcnt){
     if(sw!=2){
         var add_btn = $("#add_btn");

@@ -72,8 +72,8 @@ body{
 #add_btn{
     background-color:#e9fffc;
     color: #00c2ab;
-    width: 130px;
-    height: 40px;
+    width: 80px;
+    height: 30px;
     border: none;
     border-radius: 20px;
     box-shadow: 0px 0px 15px #42ccba;
@@ -84,7 +84,7 @@ body{
     margin-top: 20px;
     margin-bottom: 10px;
     margin-left: 20px;
-    font-size: 15pt;
+    font-size: 10pt;
     font-family: "애플EB";
 }
 #title{
