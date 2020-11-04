@@ -5,6 +5,22 @@ var greenblue = "#00c2ab";
 var bright_greenblue = "#e9fffc";
 var white = "#ffffff";
 
+window.onload = function(){
+    for(i = 0; i < $(".cell").length ; i = i+3){
+        var row = $(".cell").eq(i).html();
+
+        $(".cell").eq(i).attr("id", row + "_1");
+        $(".cell").eq(i+1).attr("id", row + "_2");
+        $(".cell").eq(i+2).attr("id", row + "_3");
+
+        $(".cell").eq(i).attr("onclick", "cell_focus(" + row + ")");
+        $(".cell").eq(i+1).attr("onclick", "cell_focus(" + row + ")");
+        $(".cell").eq(i+2).attr("onclick", "cell_focus(" + row + ")");
+
+        db[db.length] = [row, $(".cell").eq(i+1).html(), $(".cell").eq(i+2).html()];
+    }
+}
+
 function cell_reset(){
     var num = $("#" + tmp + "_1");
     var name = $("#" + tmp + "_2");

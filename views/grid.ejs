@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="script/grid_uglified.js"></script>
+    <script src="./script/grid.js"></script>
     <link rel="stylesheet" type="text/css" href="grid.css">
 </head>
 <body>
@@ -28,6 +28,13 @@
                                     <td width="150px" id="title"><center>이름</center></td>
                                     <td id="title"><center>부서</center></td>
                                 </tr>
+                                <% for(i = 0; i < list.length; i++) { %>
+                                <tr>
+                                    <td><center><div class='cell'><%= list[i].id %></div></center></td>
+                                    <td><center><div class='cell'><%= list[i].name %></div></center></td>
+                                    <td><center><div class='cell'><%= list[i].part %></div></center></td>
+                                </tr>
+                                <% } %>
                             </table>
                         </center>
                     </div>
