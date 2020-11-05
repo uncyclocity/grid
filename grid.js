@@ -1,5 +1,7 @@
 var sw = 0;
 var db = [];
+var edit_row = [];
+var ins_row = [];
 var tmp = -1;
 var greenblue = "#00c2ab";
 var bright_greenblue = "#e9fffc";
@@ -54,7 +56,6 @@ function disabled(){
     save_btn.css("color", disabled_color);
     hint1.css("color", disabled_color);
     hint2.css("color", disabled_color);
-
 }
 
 function abled(){
@@ -127,17 +128,36 @@ function view(){
 }
 
 function send(){
-    var grid_contents = "";
+    if(edit_row.length == 0 && ins_row.length == 0){
+        alert("1회 이상의 추가 혹은 수정이 이루어져야 DB에 저장하실 수 있습니다.");
+    }else{
+        if(confirm("변경 내용을 DB에 저장하시겠습니까?")){
+        var grid_contents = "";
 
-    for(var i = 0; i < db.length; i++){
-        for(var j = 0; j < 3; j++){
-            grid_contents += "<input type='hidden' name='db_" + i + "_" + j + "' value='" + db[i][j] + "'> ";
+        for(var i = 0; i < db.length; i++){
+            for(var j = 0; j < 3; j++){
+                grid_contents += "<input type='hidden' name='db_" + i + "_" + j + "' value='" + db[i][j] + "'> ";
+            }
+        }
+        grid_contents += "<input type='hidden' name='edit_length' value='" + edit_row.length + "'> ";
+        grid_contents += "<input type='hidden' name='ins_length' value='" + ins_row.length + "'> ";
+
+        if(edit_row.length > 0){
+            for(var i = 0; i < edit_row.length; i++)
+                grid_contents += "<input type='hidden' name='edit_" + i + "' value='" + edit_row[i] + "'> ";
+        }
+            
+        if(ins_row.length > 0){
+            for(var i = 0; i < ins_row.length; i++)
+                grid_contents += "<input type='hidden' name='ins_" + i + "' value='" + ins_row[i] + "'> ";
+        }
+
+        document.write("<form action='/ssave' id='post' method='post'> " + grid_contents + "</form>");
+
+        document.getElementById("post").submit();
         }
     }
-    grid_contents += "<input type='hidden' name='db_length' value='" + db.length + "'>";
-    document.write("<form action='/delete' id='post' method='post'> " + grid_contents + "</form>");
-
-    document.getElementById("post").submit();
+    
 }
 
 function cell_focus(grid_rowcnt){
@@ -226,6 +246,8 @@ function save(){
                 grid.append(html);
                 db[db.length] = [grid_rowcnt, name, part];
 
+                ins_row.push(grid_rowcnt);
+
                 alert('추가완료');
 
                 clear();
@@ -237,6 +259,9 @@ function save(){
                 $("#" + tmp + "_3").html(part);
                 db[tmp-1] = [tmp, name, part];
                 $("#output_area").val(name + ", " + part);
+
+                if(edit_row.indexOf(tmp) < 0)
+                    edit_row.push(tmp);
 
                 alert('수정완료');
             }
