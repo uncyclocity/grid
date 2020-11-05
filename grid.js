@@ -123,8 +123,11 @@ function add(){
 }
 
 function view(){
-    if(confirm("마지막으로 저장을 한 이후의 변경사항이 있을 경우 초기화됩니다.\n계속하시겠습니까?"))
-        location.href= window.location.href;
+    if(edit_row.length != 0 && ins_row.length != 0){
+        if(confirm("마지막으로 저장을 한 이후의 변경사항이 있을 경우 초기화됩니다.\n계속하시겠습니까?"))
+            location.href= window.location.href;
+    }
+
 }
 
 function send(){
@@ -152,9 +155,9 @@ function send(){
                 grid_contents += "<input type='hidden' name='ins_" + i + "' value='" + ins_row[i] + "'> ";
         }
 
-        document.write("<form action='/ssave' id='post' method='post'> " + grid_contents + "</form>");
+        document.write("<form action='/save' id='post' method='post'> " + grid_contents + "</form>");
 
-        document.getElementById("post").submit();
+        $("#post").submit();
         }
     }
     

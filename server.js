@@ -18,12 +18,14 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/ssave', function (req, res){
-  if(req.body.edit_length > 0){
+app.post('/save', function (req, res){
+  var body = req.body;
+
+  if(body.edit_length > 0){
     var sql = 'update agents set name = ?, part = ? where id = ?';
-    for(var i = 0; i < req.body.edit_length; i++){
-      edit_row = eval("req.body.edit_" + i) - 1;
-      var params = eval("[req.body.db_" + edit_row + "_1, req.body.db_" + edit_row + "_2, req.body.db_" + edit_row + "_0]");
+    for(var i = 0; i < body.edit_length; i++){
+      edit_row = eval("body.edit_" + i) - 1;
+      var params = eval("[body.db_" + edit_row + "_1, body.db_" + edit_row + "_2, body.db_" + edit_row + "_0]");
       console.log(params);
       conn.query(sql, params, function(err, rows, fields){
         if(err) console.log('쿼리가 실행되지 않았습니다\n' + err);
@@ -31,11 +33,11 @@ app.post('/ssave', function (req, res){
     }
   }
 
-  if(req.body.ins_length > 0){
+  if(body.ins_length > 0){
     var sql = 'insert into agents values(?, ?, ?)';
-    for(var i = 0; i < req.body.ins_length; i++){
-      ins_row = eval("req.body.ins_" + i) - 1;
-      var params = eval("[req.body.db_" + ins_row + "_0, req.body.db_" + ins_row + "_1, req.body.db_" + ins_row + "_2]");          
+    for(var i = 0; i < body.ins_length; i++){
+      ins_row = eval("body.ins_" + i) - 1;
+      var params = eval("[body.db_" + ins_row + "_0, body.db_" + ins_row + "_1, body.db_" + ins_row + "_2]");          
       console.log(params);
       conn.query(sql, params, function(err, rows, fields){
         if(err) console.log('쿼리가 실행되지 않았습니다\n' + err);
