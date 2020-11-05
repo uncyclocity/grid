@@ -122,11 +122,22 @@ function add(){
 }
 
 function view(){
-
+    if(confirm("마지막으로 저장을 한 이후의 변경사항이 있을 경우 초기화됩니다.\n계속하시겠습니까?"))
+        location.href= window.location.href;
 }
 
 function send(){
-    
+    var grid_contents = "";
+
+    for(var i = 0; i < db.length; i++){
+        for(var j = 0; j < 3; j++){
+            grid_contents += "<input type='hidden' name='db_" + i + "_" + j + "' value='" + db[i][j] + "'> ";
+        }
+    }
+    grid_contents += "<input type='hidden' name='db_length' value='" + db.length + "'>";
+    document.write("<form action='/delete' id='post' method='post'> " + grid_contents + "</form>");
+
+    document.getElementById("post").submit();
 }
 
 function cell_focus(grid_rowcnt){
