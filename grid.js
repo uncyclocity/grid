@@ -7,7 +7,7 @@ var greenblue = "#00c2ab";
 var bright_greenblue = "#e9fffc";
 var white = "#ffffff";
 
-window.onload = function(){
+$(function(){
     for(i = 0; i < $(".cell").length ; i = i+3){
         var row = $(".cell").eq(i).html();
 
@@ -21,7 +21,7 @@ window.onload = function(){
 
         db[db.length] = [row, $(".cell").eq(i+1).html(), $(".cell").eq(i+2).html()];
     }
-}
+});
 
 function cell_reset(){
     var num = $("#" + tmp + "_1");
